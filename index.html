@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>36 Cartas do Baralho Cigano em Mapas Mentais</title>
+  <meta name="description" content="Entenda o significado das 36 cartas do Baralho Cigano com mapas visuais que fixam de vez — sem decoreba e sem apostila confusa.">
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin="">
+  <link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/HeroCigano-CSjaBAk9.webp" fetchpriority="high">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --accent-red: #ef233c;
+      --accent-gold: #f0b429;
+      --accent-green: #22c55e;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .font-manrope { font-family: 'Manrope', sans-serif; }
+
+    ::selection { background: var(--accent-red); color: white; }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fade-in-up 0.7s ease-out forwards; opacity: 0; }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239,35,60,0.55), 0 8px 30px -6px rgba(239,35,60,0.6); }
+      50% { box-shadow: 0 0 0 10px rgba(239,35,60,0), 0 8px 30px -6px rgba(239,35,60,0.6); }
+    }
+    .cta-pulse { animation: pulse-glow 2.2s ease-in-out infinite; }
+
+    @keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
+    .stars-1 { box-shadow: 234px 124px #fff, 654px 345px #fff, 876px 12px #fff, 120px 800px #fff, 400px 1500px #fff, 300px 200px #fff, 100px 1000px #fff, 90px 1900px #fff, 220px 600px #fff, 140px 100px #fff, 300px 400px #fff, 160px 1200px #fff; }
+    .stars-2 { box-shadow: 123px 456px #fff, 89px 234px #fff, 256px 890px #fff, 110px 300px #fff, 200px 1200px #fff, 150px 500px #fff, 60px 1700px #fff, 130px 900px #fff; }
+
+    .text-stroke {
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
+      color: transparent;
+    }
+
+    .glow-border {
+      position: relative;
+    }
+    .glow-border::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, var(--accent-gold), transparent 40%, var(--accent-red) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: .6;
+      animation: pulse-glow 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    /* Marquee auto-scroll — mapas mentais */
+    .mm-carousel { overflow: hidden; container-type: inline-size; }
+    .mm-track { display: flex; width: max-content; animation: mm-marquee 26s linear infinite; }
+    .mm-carousel:hover .mm-track { animation-play-state: paused; }
+    .mm-slide { flex: 0 0 100cqw; width: 100cqw; margin-right: 16px; }
+    @keyframes mm-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+
+    /* FAQ accordion */
+    .faq-chevron { transition: transform .2s ease; }
+    .faq-panel { transition: grid-template-rows .25s ease; display: grid; grid-template-rows: 0fr; }
+    .faq-panel > div { overflow: hidden; }
+    .faq-panel.open { grid-template-rows: 1fr; }
+
+    /* Downsell modal */
+    #downsell-modal {
+      position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center;
+      padding: 12px; overflow-y: auto; overscroll-behavior: contain;
+      background: rgba(0,0,0,.75); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+    #downsell-modal.is-open { display: flex; animation: dsFade .22s ease-out both; }
+    #downsell-modal .ds-card {
+      width: 100%; max-width: min(92vw, 380px); margin: auto;
+      max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px);
+      overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+      animation: dsZoom .26s cubic-bezier(.16, 1, .3, 1) both;
+      padding: clamp(16px, 4.5vw, 26px);
+    }
+    @keyframes dsFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes dsZoom { from { opacity: 0; transform: scale(.92) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    #downsell-modal #downsell-close { top: .5rem; right: .5rem; }
+    #downsell-modal #downsell-title { font-size: clamp(26px, 8vw, 36px); margin-top: .55rem; }
+    #downsell-modal .price-big { font-size: clamp(34px, 10vw, 48px); }
+    @media (min-width:640px) { #downsell-modal { padding: 24px; } }
+    @media (max-height:680px) {
+      #downsell-modal #downsell-title { font-size: clamp(22px, 6vw, 28px); }
+      #downsell-modal .price-big { font-size: clamp(28px, 8vw, 38px); }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      #downsell-modal.is-open, #downsell-modal .ds-card, .cta-pulse, .glow-border::before { animation: none; }
+    }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1298118155437989');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1298118155437989&ev=PageView&noscript=1" / loading="lazy"
+      decoding="async"></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body class="bg-black text-white">
+
+  <div id="root">
+    <!-- Global background: stars + red glow + grid -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#1a0505] to-black"></div>
+      <div class="absolute top-0 left-0 w-[1px] h-[1px] bg-transparent stars-1 animate-[animStar_60s_linear_infinite]"></div>
+      <div class="absolute top-0 left-0 w-[2px] h-[2px] bg-transparent stars-2 animate-[animStar_90s_linear_infinite]"></div>
+      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ef233c]/10 rounded-full blur-[120px]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(circle_at_center,black_40%,transparent_85%)]"></div>
+    </div>
+
+    <main class="relative z-10">
+      <div class="w-full bg-[#ef233c] text-white text-center text-xs sm:text-sm font-bold py-2 px-3">
+        <span class="inline-flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+          </svg>
+          50% OFF acaba em 13:47
+        </span>
+      </div>
+
+      <div class="mx-auto w-full max-w-[480px] px-4">
+
+        <!-- HERO -->
+        <section class="pt-10 pb-10 text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 animate-fade-up" style="animation-delay:.05s">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#ef233c]"></span>
+            </span>
+            <span class="text-xs font-medium text-zinc-300 font-manrope">⭐⭐⭐⭐⭐ +3.700 avaliações</span>
+          </div>
+
+          <h1 class="font-manrope font-extrabold tracking-tight leading-[1.1] text-4xl sm:text-5xl animate-fade-up" style="animation-delay:.1s">
+            <span class="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/50">36 Cartas do Baralho Cigano</span>
+            <span class="block text-[#ef233c] relative inline-block mt-1">
+              em Mapas Mentais
+              <svg class="absolute w-full h-2 -bottom-2 left-0 text-[#ef233c] opacity-70" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="2" fill="none" />
+              </svg>
+            </span>
+          </h1>
+
+          <div class="mt-8 mb-6 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_-10px_rgba(239,35,60,0.35)] animate-fade-up" style="animation-delay:.15s">
+            <img src="images/HeroCigano-CSjaBAk9.webp" alt="Atividades Festa Junina" width="900" height="506" class="w-full h-auto" loading="eager" fetchpriority="high" decoding="async">
+          </div>
+
+          <p class="text-base sm:text-lg text-zinc-400 leading-relaxed mb-8 animate-fade-up" style="animation-delay:.2s">
+            Entenda o significado das 36 cartas do Baralho Cigano com mapas visuais que fixam de vez — sem decoreba e sem apostila confusa.
+          </p>
+
+          <div class="animate-fade-up" style="animation-delay:.25s">
+            <a href="#checkout" id="hero-cta" class="cta-pulse block w-full text-center rounded-2xl px-6 py-5 text-lg font-extrabold uppercase tracking-wide text-white bg-gradient-to-r from-[#ef233c] to-[#b3132a] active:scale-[0.98] transition-transform">
+              Garantir Acesso
+            </a>
+            <p class="mt-4 text-center text-xs text-zinc-500 inline-flex w-full items-center justify-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#22c55e]">
+                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              Pagamento 100% seguro · Acesso imediato
+            </p>
+          </div>
+        </section>
+
+        <!-- CARROSSEL DOS MAPAS -->
+        <section class="py-8 border-t border-white/10">
+          <h2 class="font-manrope font-bold text-2xl sm:text-3xl text-center text-white">
+            Espie por dentro: alguns dos mapas que já vão estar no seu material
+          </h2>
+          <p class="mt-2 text-sm text-zinc-500 text-center">Arraste para o lado e veja mais</p>
+          <div class="mt-5 mm-carousel rounded-2xl border border-white/10 bg-white/[0.02] p-1.5">
+            <div class="mm-track">
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white"><img src="images/01-D_qEcK5J.webp" alt="Estampa Faith Over Fear" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white"><img src="images/02-nBnedu1s.webp" alt="Estampa Cristo é Rei" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white"><img src="images/03-BXpbEM-H.webp" alt="Estampa Salmo 23" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white"><img src="images/04-DODnqHpK.webp" alt="Estampa Filhos de Deus" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white"><img src="images/05-BBFAVklp.webp" alt="Estampa Cristo é Rei" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white"><img src="images/06-DKotVGuV.webp" alt="Estampa Cristo é Rei" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white" aria-hidden="true"><img src="images/01-D_qEcK5J.webp" alt="Estampa Faith Over Fear" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white" aria-hidden="true"><img src="images/02-nBnedu1s.webp" alt="Estampa Cristo é Rei" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white" aria-hidden="true"><img src="images/03-BXpbEM-H.webp" alt="Estampa Salmo 23" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white" aria-hidden="true"><img src="images/04-DODnqHpK.webp" alt="Estampa Filhos de Deus" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white" aria-hidden="true"><img src="images/05-BBFAVklp.webp" alt="Estampa Cristo é Rei" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+              <div class="mm-slide aspect-[16/9] rounded-xl overflow-hidden bg-white" aria-hidden="true"><img src="images/06-DKotVGuV.webp" alt="Estampa Cristo é Rei" class="w-full h-full object-contain block" loading="lazy" decoding="async"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BENEFÍCIOS -->
+        <section class="mb-8 mt-4">
+          <div class="space-y-3">
+            <div class="p-5 bg-white/[0.03] border border-white/10 border-l-4 border-l-[#ef233c] rounded-xl backdrop-blur-sm hover:bg-white/[0.05] transition-colors">
+              <h3 class="font-bold text-white text-lg leading-tight">Pronto pra imprimir em folha A4 — baixou, imprimiu, já estuda.</h3>
+            </div>
+            <div class="p-5 bg-white/[0.03] border border-white/10 border-l-4 border-l-[#ef233c] rounded-xl backdrop-blur-sm hover:bg-white/[0.05] transition-colors">
+              <h3 class="font-bold text-white text-lg leading-tight">Cada carta explicada em linguagem direta, sem termo que trava iniciante.</h3>
+            </div>
+            <div class="p-5 bg-white/[0.03] border border-white/10 border-l-4 border-l-[#ef233c] rounded-xl backdrop-blur-sm hover:bg-white/[0.05] transition-colors">
+              <h3 class="font-bold text-white text-lg leading-tight">Visual limpo e organizado — a informação entra pelos olhos e gruda.</h3>
+            </div>
+            <div class="p-5 bg-white/[0.03] border border-white/10 border-l-4 border-l-[#ef233c] rounded-xl backdrop-blur-sm hover:bg-white/[0.05] transition-colors">
+              <h3 class="font-bold text-white text-lg leading-tight">Feito pra estudar e consultar na hora da tiragem.</h3>
+            </div>
+          </div>
+        </section>
+
+        <!-- PREVIEW DO MATERIAL -->
+        <section class="pt-6 border-t border-white/10">
+          <div class="text-center mb-5">
+            <h2 class="font-manrope font-bold text-2xl sm:text-3xl text-white">Tudo que está dentro do Material</h2>
+          </div>
+          <div class="mb-8 rounded-2xl overflow-hidden border border-white/10">
+            <img src="images/HeroCigano-CSjaBAk9.webp" alt="Preview do Material Festa Junina" width="760" height="429" class="w-full h-auto" loading="lazy" decoding="async">
+          </div>
+        </section>
+
+        <!-- CHECKLIST -->
+        <section class="mt-4">
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.03] backdrop-blur-sm">
+              <div class="text-2xl shrink-0">✅</div><span class="text-[15px] font-semibold text-zinc-200 leading-snug">Os 36 mapas mentais completos — um pra cada carta do baralho cigano.</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.03] backdrop-blur-sm">
+              <div class="text-2xl shrink-0">✅</div><span class="text-[15px] font-semibold text-zinc-200 leading-snug">O significado de cada carta explicado pra entender de primeira.</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.03] backdrop-blur-sm">
+              <div class="text-2xl shrink-0">✅</div><span class="text-[15px] font-semibold text-zinc-200 leading-snug">Palavras-chave, o lado positivo e os desafios de cada carta num relance.</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.03] backdrop-blur-sm">
+              <div class="text-2xl shrink-0">✅</div><span class="text-[15px] font-semibold text-zinc-200 leading-snug">O significado geral e o conselho que cada carta traz.</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.03] backdrop-blur-sm">
+              <div class="text-2xl shrink-0">✅</div><span class="text-[15px] font-semibold text-zinc-200 leading-snug">A leitura da carta no amor e nos relacionamentos.</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.03] backdrop-blur-sm">
+              <div class="text-2xl shrink-0">✅</div><span class="text-[15px] font-semibold text-zinc-200 leading-snug">O que a carta mostra sobre dinheiro e trabalho.</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.03] backdrop-blur-sm">
+              <div class="text-2xl shrink-0">✅</div><span class="text-[15px] font-semibold text-zinc-200 leading-snug">A leitura espiritual de cada carta.</span>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.03] backdrop-blur-sm">
+              <div class="text-2xl shrink-0">✅</div><span class="text-[15px] font-semibold text-zinc-200 leading-snug">Tudo em PDF pra abrir no celular, no PC ou imprimir quando quiser.</span>
+            </div>
+            <div class="glow-border flex items-center gap-4 p-4 border border-white/10 rounded-xl bg-white/[0.04] relative">
+              <div class="text-2xl shrink-0 z-10">🎁</div><span class="text-[15px] font-semibold text-white leading-snug z-10">Bônus exclusivos liberados no Plano Completo.</span>
+            </div>
+          </div>
+          <div class="mt-8 space-y-2 text-center">
+            <p class="text-[15px] font-semibold text-zinc-200 flex items-center justify-center gap-2">Chega na hora no seu e-mail, assim que o pagamento é aprovado. 📧</p>
+            <p class="text-[15px] font-semibold text-zinc-200 flex items-center justify-center gap-2">Baixou, imprimiu, começou.</p>
+          </div>
+        </section>
+
+        <!-- BÔNUS -->
+        <section class="py-8 mt-4">
+          <div class="-mx-4 px-6 py-10 mb-8 text-center rounded-none bg-gradient-to-b from-[#3a0a12] to-black border-y border-[#ef233c]/25">
+            <p class="text-lg sm:text-xl font-medium leading-tight mb-5 text-zinc-200">🎁 Além dos <strong class="text-white">36 Mapas Mentais das Cartas do Baralho Cigano</strong>, ao adquirir o <br>Plano Completo você vai levar <strong class="text-white">5 SUPER BÔNUS!</strong></p>
+            <p class="text-[#f0b429] text-lg sm:text-xl font-bold italic underline mb-4">(quem pega agora garante todos)</p>
+            <h2 class="font-manrope font-black leading-[1.15] text-2xl sm:text-3xl text-[#f0b429] uppercase">BÔNUS LIBERADOS SÓ NO <br>PLANO COMPLETO</h2>
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden hover:border-white/20 transition-colors">
+              <div class="w-full bg-white"><img src="images/GuiaBonus-DDQm1jCy.webp" alt="Guia de Combinações" width="720" height="720" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+              <div class="p-5 text-center">
+                <div class="inline-block text-xs font-bold text-black bg-[#f0b429] px-2 py-0.5 rounded-full">Bônus #01</div>
+                <div class="mt-2 text-xl font-black text-white leading-snug font-manrope">Guia de Combinações</div>
+                <p class="mt-2 text-sm text-zinc-400">Descubra o que muda quando duas cartas caem juntas — cada combinação destrinchada pra você ler sem travar.</p>
+                <div class="mt-4 flex items-center justify-center gap-2"><span class="text-base line-through text-zinc-500">R$9,90</span><span class="text-xs font-bold text-black bg-[#22c55e] px-2 py-0.5 rounded-full">GRÁTIS</span></div>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden hover:border-white/20 transition-colors">
+              <div class="w-full bg-white"><img src="images/TiragensBonus-BkkvdEpi.webp" width="720" height="720" alt="Modelos de Tiragens" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+              <div class="p-5 text-center">
+                <div class="inline-block text-xs font-bold text-black bg-[#f0b429] px-2 py-0.5 rounded-full">Bônus #02</div>
+                <div class="mt-2 text-xl font-black text-white leading-snug font-manrope">Modelos de Tiragens</div>
+                <p class="mt-2 text-sm text-zinc-400">Tiragens prontas com o passo a passo: onde colocar cada carta e como ler o que cada posição está dizendo.</p>
+                <div class="mt-4 flex items-center justify-center gap-2"><span class="text-base line-through text-zinc-500">R$14,90</span><span class="text-xs font-bold text-black bg-[#22c55e] px-2 py-0.5 rounded-full">GRÁTIS</span></div>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden hover:border-white/20 transition-colors">
+              <div class="w-full bg-white"><img src="images/PolarBonus-Qf0YS6Tf.webp" width="720" height="720" alt="Guia das Polaridades das Cartas" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+              <div class="p-5 text-center">
+                <div class="inline-block text-xs font-bold text-black bg-[#f0b429] px-2 py-0.5 rounded-full">Bônus #03</div>
+                <div class="mt-2 text-xl font-black text-white leading-snug font-manrope">Guia das Polaridades das Cartas</div>
+                <p class="mt-2 text-sm text-zinc-400">Saiba de cara quais cartas puxam pro positivo, negativo ou neutro — e como isso vira o jogo na hora de combinar.</p>
+                <div class="mt-4 flex items-center justify-center gap-2"><span class="text-base line-through text-zinc-500">R$24,90</span><span class="text-xs font-bold text-black bg-[#22c55e] px-2 py-0.5 rounded-full">GRÁTIS</span></div>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden hover:border-white/20 transition-colors">
+              <div class="w-full bg-white"><img src="images/bonus4.webp" width="720" height="720" alt="Correspondência com o Baralho Comum" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+              <div class="p-5 text-center">
+                <div class="inline-block text-xs font-bold text-black bg-[#f0b429] px-2 py-0.5 rounded-full">Bônus #04</div>
+                <div class="mt-2 text-xl font-black text-white leading-snug font-manrope">Correspondência com o Baralho Comum</div>
+                <p class="mt-2 text-sm text-zinc-400">Descubra qual carta do baralho comum (52 cartas) corresponde a cada carta cigana — e faça leituras mesmo sem ter o baralho cigano em mãos.</p>
+                <div class="mt-4 flex items-center justify-center gap-2"><span class="text-base line-through text-zinc-500">R$19,90</span><span class="text-xs font-bold text-black bg-[#22c55e] px-2 py-0.5 rounded-full">GRÁTIS</span></div>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden hover:border-white/20 transition-colors">
+              <div class="w-full bg-white"><img src="images/bonus5.webp" alt="Guia das Perguntas Poderosas" width="720" height="720" class="w-full h-auto block" loading="lazy" decoding="async"></div>
+              <div class="p-5 text-center">
+                <div class="inline-block text-xs font-bold text-black bg-[#f0b429] px-2 py-0.5 rounded-full">Bônus #05</div>
+                <div class="mt-2 text-xl font-black text-white leading-snug font-manrope">Guia das Perguntas Poderosas</div>
+                <p class="mt-2 text-sm text-zinc-400">As perguntas certas pra fazer ao baralho em cada área (amor, dinheiro, decisão). Pergunta errada dá resposta confusa — aqui você aprende a perguntar.</p>
+                <div class="mt-4 flex items-center justify-center gap-2"><span class="text-base line-through text-zinc-500">R$17,90</span><span class="text-xs font-bold text-black bg-[#22c55e] px-2 py-0.5 rounded-full">GRÁTIS</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ÁUDIO PREMIUM -->
+        <section class="py-6">
+          <div class="-mx-4 px-6 py-10 text-center rounded-none bg-gradient-to-b from-[#3a0a12] to-black border-y border-[#ef233c]/25">
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-[#f0b429] text-black px-3 py-1 text-xs font-black uppercase tracking-wider mb-4">🎧 Exclusivo do Plano Premium</div>
+            <h2 class="font-manrope font-extrabold text-2xl sm:text-3xl text-white">Versão em Áudio das 36 Cartas</h2>
+            <img src="images/versao-audio.webp" alt="Versão em Áudio das 36 Cartas" width="480" height="480" class="mt-5 mb-5 mx-auto w-full h-auto rounded-2xl border border-white/10" style="max-width:320px" loading="lazy" decoding="async">
+            <p class="text-base sm:text-lg text-zinc-300 leading-relaxed">Estude ouvindo — no trânsito, na academia, lavando louça. Cada carta narrada com significado, palavras-chave e conselho. Aprenda com os olhos E com os ouvidos.</p>
+            <p class="mt-4 text-[#f0b429] text-sm font-bold italic">(Disponível somente no Plano Premium)</p>
+          </div>
+        </section>
+
+        <!-- DEPOIMENTOS -->
+        <section class="py-8 border-t border-white/10">
+          <h2 class="font-manrope font-bold text-2xl sm:text-3xl text-center text-white">O que as alunas dizem depois de usar</h2>
+          <p class="mt-2 text-sm text-zinc-500 text-center">Arraste para o lado e veja mais</p>
+          <div class="relative mt-5">
+            <div id="feedback-carousel" class="no-scrollbar -mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing">
+              <div class="feedback-slide snap-center shrink-0 w-[85%] aspect-[3/4] rounded-2xl overflow-hidden bg-white border border-white/10">
+                <img src="images/Feedback01-COLF-5-_.webp" alt="Feedback de cliente 1" class="w-full h-full object-contain block pointer-events-none" loading="lazy" decoding="async"></div>
+              <div class="feedback-slide snap-center shrink-0 w-[85%] aspect-[3/4] rounded-2xl overflow-hidden bg-white border border-white/10">
+                <img src="images/Feedback02-lguTHhLC.webp" alt="Feedback de cliente 2" class="w-full h-full object-contain block pointer-events-none" loading="lazy" decoding="async"></div>
+              <div class="feedback-slide snap-center shrink-0 w-[85%] aspect-[3/4] rounded-2xl overflow-hidden bg-white border border-white/10">
+                <img src="images/Feedback03-DnrbKKwU.webp" alt="Feedback de cliente 3" class="w-full h-full object-contain block pointer-events-none" loading="lazy" decoding="async"></div>
+            </div>
+
+            <button type="button" id="feedback-prev" aria-label="Depoimento anterior" class="hidden sm:grid absolute -left-3 top-1/2 -translate-y-1/2 place-items-center w-10 h-10 rounded-full bg-black/70 border border-white/15 text-white hover:bg-[#ef233c] hover:border-[#ef233c] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m15 18-6-6 6-6"></path></svg>
+            </button>
+            <button type="button" id="feedback-next" aria-label="Próximo depoimento" class="hidden sm:grid absolute -right-3 top-1/2 -translate-y-1/2 place-items-center w-10 h-10 rounded-full bg-black/70 border border-white/15 text-white hover:bg-[#ef233c] hover:border-[#ef233c] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m9 18 6-6-6-6"></path></svg>
+            </button>
+
+            <div id="feedback-dots" class="mt-4 flex items-center justify-center gap-2">
+              <button type="button" class="feedback-dot w-2 h-2 rounded-full bg-white/25 transition-colors" aria-label="Ir para depoimento 1"></button>
+              <button type="button" class="feedback-dot w-2 h-2 rounded-full bg-white/25 transition-colors" aria-label="Ir para depoimento 2"></button>
+              <button type="button" class="feedback-dot w-2 h-2 rounded-full bg-white/25 transition-colors" aria-label="Ir para depoimento 3"></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHECKOUT -->
+        <section id="checkout" class="py-10 border-t border-white/10">
+          <h2 class="font-manrope font-extrabold leading-[1.15] text-3xl sm:text-4xl text-center text-white">
+            Garanta enquanto o <span class="text-[#ef233c] underline decoration-2">Plano Completo</span> está com desconto!
+          </h2>
+
+          <div class="mt-8 space-y-5">
+            <!-- BÁSICO -->
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center flex flex-col items-center">
+              <div class="text-xs font-bold uppercase tracking-wider text-zinc-500">Básico</div>
+              <div class="mt-2 flex items-end justify-center gap-2"><span class="text-4xl font-extrabold text-white">R$9,90</span></div>
+              <ul class="mt-4 space-y-2 text-sm text-left self-start">
+                <li class="flex items-start gap-2 text-zinc-300"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-zinc-500 mt-0.5"><path d="M20 6 9 17l-5-5"></path></svg> 36 Mapas Mentais das Cartas do Baralho Cigano</li>
+                <li class="flex items-start gap-2 text-zinc-300"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-zinc-500 mt-0.5"><path d="M20 6 9 17l-5-5"></path></svg> Material em PDF para acessar e estudar</li>
+                <li class="flex items-start gap-2 text-zinc-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[#ef233c] mt-0.5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg> Sem os bônus do Plano Completo</li>
+              </ul>
+              <button type="button" id="btn-basico" class="mt-5 block w-full text-center rounded-xl bg-[#ef233c] hover:bg-[#c9182d] text-white px-5 py-3 font-bold text-sm active:scale-[0.98] transition">APENAS O MATERIAL BASE</button>
+              <div class="mt-8">
+                <p class="text-[#ef233c] font-black text-sm leading-snug uppercase">ESPERA: tem uma <br>opção <span class="underline decoration-2 underline-offset-4">MUITO mais completa</span> <br>para você! Veja logo abaixo</p>
+                <div class="mt-2 flex flex-col items-center -space-y-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-[#ef233c] animate-bounce"><path d="m7 6 5 5 5-5"></path><path d="m7 13 5 5 5-5"></path></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- PREMIUM -->
+            <div class="relative rounded-3xl border-2 border-[#ef233c] shadow-[0_0_40px_-8px_rgba(239,35,60,0.45)] overflow-hidden scale-[1.02]">
+              <div class="bg-[#f0b429] text-black py-1.5 flex items-center justify-center gap-2 font-black text-[11px] uppercase tracking-wider">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                O MAIS ESCOLHIDO
+              </div>
+              <div class="bg-gradient-to-b from-zinc-900 to-black p-6 text-center flex flex-col items-center">
+                <div class="text-xs font-bold uppercase tracking-wider text-zinc-400 mt-2">Premium</div>
+                <div class="mt-4 mb-2 rounded-xl overflow-hidden border border-white/10"><img src="images/HeroCigano-CSjaBAk9.webp" alt="Preview Premium" class="w-full h-auto" loading="lazy" decoding="async"></div>
+                <div class="mt-2 flex items-end justify-center gap-2"><span class="text-base line-through text-zinc-500">De R$189</span></div>
+                <div class="flex items-end justify-center gap-2"><span class="text-6xl font-extrabold text-white mt-2 font-manrope">R$27,90</span></div>
+                <div class="mt-2"><span class="text-xl text-zinc-300">ou 3x de R$ 9,81</span>
+                  <p class="text-sm text-zinc-500 italic mt-0.5">Pagamento único, sem mensalidade nenhuma.</p>
+                </div>
+                <ul class="mt-5 space-y-2.5 text-left self-start">
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="text-zinc-300">36 Mapas Mentais das Cartas do Baralho Cigano</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="text-zinc-300">Material em PDF para acessar e estudar</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="text-zinc-300">Cada carta explicada em linguagem direta, sem termo que trava iniciante.</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#f0b429] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path></svg></span><span class="font-bold text-white">Bônus 1 - Guia de Combinações</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#f0b429] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path></svg></span><span class="font-bold text-white">Bônus 2 - Modelos de Tiragens</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#f0b429] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path></svg></span><span class="font-bold text-white">Bônus 3 - Guia das Polaridades das Cartas</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#f0b429] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path></svg></span><span class="font-bold text-white">Bônus 4 - Correspondência com o Baralho Comum</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#f0b429] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path></svg></span><span class="font-bold text-white">Bônus 5 - Guia das Perguntas Poderosas</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#f0b429] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5a9 9 0 0 1 18 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg></span><span class="font-bold text-white">Versão em Áudio das 36 Cartas <span class="text-xs font-bold text-black bg-[#f0b429] px-1.5 py-0.5 rounded-full align-middle">Exclusivo</span></span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="text-zinc-300">Envio na hora por e-mail (PDF pronto pra imprimir)</span></li>
+                  <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="text-zinc-300">Acesso vitalício — é seu pra sempre</span></li>
+                </ul>
+                <div class="mt-8 w-full">
+                  <a href="https://pay.kirvano.com/097e287f-8dce-453b-890c-fbafeaa3511d" class="cta-pulse block w-full text-center rounded-2xl px-6 py-5 text-lg font-extrabold uppercase tracking-wide text-white bg-gradient-to-r from-[#ef233c] to-[#b3132a] active:scale-[0.98] transition-transform">QUERO O PLANO PREMIUM</a>
+                </div>
+                <div class="mt-4 flex flex-col items-center gap-3">
+                  <div class="flex items-center gap-2 text-[10px] text-zinc-500 uppercase font-bold tracking-widest">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[#22c55e]"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                    Pagamento 100% seguro
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- GARANTIA -->
+        <section class="py-12 px-6 rounded-3xl bg-white/[0.03] border border-white/10 text-center">
+          <div class="max-w-3xl mx-auto flex flex-col items-center gap-6">
+            <img src="images/Garantia-BnRXlalb.webp" alt="Selo de Garantia 30 Dias" class="w-32 h-32 object-contain" loading="lazy" decoding="async">
+            <div>
+              <h2 class="font-manrope font-extrabold leading-[1.15] text-3xl sm:text-4xl text-white mb-4">Garantia Tripla de Satisfação</h2>
+              <div class="space-y-4 text-sm sm:text-base text-zinc-400 leading-relaxed">
+                <p><span class="text-white font-bold">1. 30 dias, risco zero.</span> Não gostou, por qualquer motivo? Devolvemos 100%, sem perguntas, sem burocracia.</p>
+                <p><span class="text-white font-bold">2. Garantia de Resultado.</span> Estude os 36 mapas mentais e tente sua primeira leitura completa. Se não conseguir, além do reembolso <span class="text-white font-bold">você fica com todo o material.</span></p>
+                <p class="italic">Você só tem a ganhar. O risco é todo nosso.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="py-10">
+          <h2 class="font-manrope font-bold text-2xl sm:text-3xl text-center text-white">Perguntas Frequentes</h2>
+          <div class="mt-5 border-t border-white/10">
+            <div class="border-b border-white/10">
+              <button type="button" class="faq-trigger w-full flex items-center justify-between py-4 text-left font-bold text-base text-white" aria-expanded="false">
+                <span>Como recebo o material depois de pagar?</span>
+                <svg class="faq-chevron w-4 h-4 shrink-0 text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+              </button>
+              <div class="faq-panel"><div><p class="pb-4 text-sm text-zinc-400 leading-relaxed">Assim que o pagamento é aprovado, o material chega direto no seu e-mail em PDF — pronto pra baixar, estudar ou imprimir.</p></div></div>
+            </div>
+            <div class="border-b border-white/10">
+              <button type="button" class="faq-trigger w-full flex items-center justify-between py-4 text-left font-bold text-base text-white" aria-expanded="false">
+                <span>Preciso instalar algum programa pra abrir?</span>
+                <svg class="faq-chevron w-4 h-4 shrink-0 text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+              </button>
+              <div class="faq-panel"><div><p class="pb-4 text-sm text-zinc-400 leading-relaxed">Não. É um PDF que abre em qualquer celular, tablet ou computador — e também pode imprimir em folha A4 se preferir estudar no papel.</p></div></div>
+            </div>
+            <div class="border-b border-white/10">
+              <button type="button" class="faq-trigger w-full flex items-center justify-between py-4 text-left font-bold text-base text-white" aria-expanded="false">
+                <span>Comprar aqui é seguro?</span>
+                <svg class="faq-chevron w-4 h-4 shrink-0 text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+              </button>
+              <div class="faq-panel"><div><p class="pb-4 text-sm text-zinc-400 leading-relaxed">Sim. O pagamento é processado com criptografia de ponta a ponta e seus dados nunca são compartilhados.</p></div></div>
+            </div>
+            <div class="border-b border-white/10">
+              <button type="button" class="faq-trigger w-full flex items-center justify-between py-4 text-left font-bold text-base text-white" aria-expanded="false">
+                <span>E se eu não curtir o conteúdo?</span>
+                <svg class="faq-chevron w-4 h-4 shrink-0 text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+              </button>
+              <div class="faq-panel"><div><p class="pb-4 text-sm text-zinc-400 leading-relaxed">Você tem 30 dias de garantia incondicional. Se não gostar, devolvemos 100% do valor, sem perguntas — e ainda fica com o material.</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="pt-8 pb-2 text-center text-xs text-zinc-600 border-t border-white/10 mt-6">
+          <p>© 2026 Mapas Mentais Ciganos· Todos os direitos reservados</p>
+        </footer>
+      </div>
+
+      <!-- Marca d'água -->
+      <div class="flex justify-center items-center py-6 opacity-90 pointer-events-none select-none overflow-hidden">
+        <h2 class="text-[13vw] leading-none font-black font-manrope tracking-tighter text-stroke whitespace-nowrap">BARALHO CIGANO</h2>
+      </div>
+    </main>
+  </div>
+
+  <!-- Downsell Modal (abre ao clicar em "Só o material base") -->
+  <div id="downsell-modal" role="dialog" aria-modal="true" aria-labelledby="downsell-title">
+    <div class="ds-card relative rounded-3xl bg-gradient-to-b from-zinc-900 to-black border-2 border-[#ef233c] shadow-[0_0_60px_-10px_rgba(239,35,60,0.5)] text-center">
+      <button type="button" id="downsell-close" aria-label="Fechar" class="absolute top-3 right-3 sm:top-4 sm:right-4 grid place-items-center w-9 h-9 rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 sm:w-6 sm:h-6"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+      <p class="pt-1 px-8 text-xs sm:text-sm font-black uppercase tracking-wide text-[#ef233c]">⚠️ Peraí! Antes de fechar essa página</p>
+      <h2 id="downsell-title" class="font-manrope font-black leading-[1.1] text-white">PACOTE PREMIUM</h2>
+      <p class="mt-1 text-base sm:text-lg font-bold text-[#ef233c]">com um desconto que só aparece agora!</p>
+
+      <div class="mt-4 sm:mt-5 rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 text-left">
+        <p class="text-center text-base font-black uppercase text-[#ef233c]">🎁 +5 Bônus Exclusivos</p>
+        <ul class="mt-4 space-y-3">
+          <li class="flex items-start gap-3"><span class="mt-0.5 grid place-items-center w-6 h-6 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="font-bold text-white leading-snug">Bônus 1 - Guia de Combinações</span></li>
+          <li class="flex items-start gap-3"><span class="mt-0.5 grid place-items-center w-6 h-6 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="font-bold text-white leading-snug">Bônus 2 - Modelos de Tiragens</span></li>
+          <li class="flex items-start gap-3"><span class="mt-0.5 grid place-items-center w-6 h-6 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="font-bold text-white leading-snug">Bônus 3 - Guia das Polaridades das Cartas</span></li>
+          <li class="flex items-start gap-3"><span class="mt-0.5 grid place-items-center w-6 h-6 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="font-bold text-white leading-snug">Bônus 4 - Correspondência com o Baralho Comum</span></li>
+          <li class="flex items-start gap-3"><span class="mt-0.5 grid place-items-center w-6 h-6 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="font-bold text-white leading-snug">Bônus 5 - Guia das Perguntas Poderosas</span></li>
+        </ul>
+        <div class="mt-4 flex items-start gap-3 rounded-xl p-3 bg-[#f0b429]/10 border border-[#f0b429]/40">
+          <span class="mt-0.5 grid place-items-center w-6 h-6 rounded-full bg-[#f0b429] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5a9 9 0 0 1 18 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg></span>
+          <span class="text-left leading-snug"><span class="font-black text-white">🎧 Versão em Áudio das 36 Cartas</span><span class="block text-xs font-bold uppercase tracking-wide text-[#ef233c]">Exclusivo do Plano Premium</span></span>
+        </div>
+      </div>
+
+      <p class="mt-5 sm:mt-6 text-sm sm:text-base font-bold text-[#ef233c]">de <span class="line-through">R$ 27,90</span> por apenas</p>
+      <div class="price-big mt-1 font-black text-[#22c55e] leading-none whitespace-nowrap">R$ 19,90</div>
+      <p class="mt-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-500">ou 3x de R$ 7,23 no cartão*</p>
+      <a href="https://pay.kirvano.com/83e73d65-4a91-42e0-bee2-80e01b700be2" class="cta-pulse mt-5 sm:mt-6 block w-full text-center rounded-2xl px-4 sm:px-6 py-4 sm:py-5 text-base sm:text-lg font-extrabold uppercase tracking-wide text-white bg-gradient-to-r from-[#22c55e] to-[#0f9d4f] active:scale-[0.98] transition-transform">Quero meu desconto!</a>
+      <a href="https://pay.kirvano.com/a9763260-6684-46bf-b62b-5738bf94d623" id="downsell-basico" class="mt-4 inline-block text-xs sm:text-sm font-bold uppercase text-zinc-500 hover:text-zinc-300 underline underline-offset-4">Não, prefiro só o material básico.</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var modal = document.getElementById('downsell-modal');
+      var openBtn = document.getElementById('btn-basico');
+      var closeBtn = document.getElementById('downsell-close');
+      if (!modal || !openBtn) return;
+      function open(e) { if (e) e.preventDefault(); modal.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+      function close() { modal.classList.remove('is-open'); document.body.style.overflow = ''; }
+      openBtn.addEventListener('click', open);
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+    })();
+  </script>
+
+  <!-- FAQ accordion -->
+  <script>
+    (function () {
+      document.querySelectorAll('.faq-trigger').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var panel = btn.nextElementSibling;
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          panel.classList.toggle('open', !open);
+          var chevron = btn.querySelector('.faq-chevron');
+          if (chevron) chevron.style.transform = open ? '' : 'rotate(180deg)';
+        });
+      });
+    })();
+  </script>
+
+  <!-- Carrossel de depoimentos: setas, dots e arraste com o mouse -->
+  <script>
+    (function () {
+      var track = document.getElementById('feedback-carousel');
+      if (!track) return;
+      var slides = Array.prototype.slice.call(track.querySelectorAll('.feedback-slide'));
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.feedback-dot'));
+      var prevBtn = document.getElementById('feedback-prev');
+      var nextBtn = document.getElementById('feedback-next');
+
+      function goTo(i) {
+        i = Math.max(0, Math.min(slides.length - 1, i));
+        slides[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
+      function currentIndex() {
+        var center = track.scrollLeft + track.clientWidth / 2;
+        var closest = 0, best = Infinity;
+        slides.forEach(function (s, i) {
+          var mid = s.offsetLeft + s.offsetWidth / 2;
+          var d = Math.abs(mid - center);
+          if (d < best) { best = d; closest = i; }
+        });
+        return closest;
+      }
+
+      function updateDots() {
+        var idx = currentIndex();
+        dots.forEach(function (d, i) {
+          d.classList.toggle('bg-[#ef233c]', i === idx);
+          d.classList.toggle('bg-white/25', i !== idx);
+        });
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { goTo(currentIndex() - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { goTo(currentIndex() + 1); });
+      dots.forEach(function (dot, i) { dot.addEventListener('click', function () { goTo(i); }); });
+      track.addEventListener('scroll', function () {
+        clearTimeout(track._t);
+        track._t = setTimeout(updateDots, 80);
+      }, { passive: true });
+
+      // Arraste com o mouse (desktop)
+      var isDown = false, startX = 0, startScroll = 0, moved = false;
+      track.addEventListener('mousedown', function (e) {
+        isDown = true; moved = false;
+        startX = e.pageX; startScroll = track.scrollLeft;
+        track.classList.add('select-none');
+      });
+      window.addEventListener('mousemove', function (e) {
+        if (!isDown) return;
+        var dx = e.pageX - startX;
+        if (Math.abs(dx) > 5) moved = true;
+        track.scrollLeft = startScroll - dx;
+      });
+      function endDrag() {
+        if (!isDown) return;
+        isDown = false;
+        track.classList.remove('select-none');
+        updateDots();
+      }
+      window.addEventListener('mouseup', endDrag);
+      track.addEventListener('mouseleave', endDrag);
+      track.addEventListener('click', function (e) { if (moved) e.preventDefault(); }, true);
+
+      updateDots();
+    })();
+  </script>
+  <!-- UTM Preservation — captura, persiste e propaga parametros de atribuicao -->
+  <script>
+    (function () {
+      'use strict';
+      var PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'fbclid', 'sck', 'gclid'];
+      var STORAGE_KEY = '__utm_params';
+      var searchParams = new URLSearchParams(window.location.search);
+      var captured = {};
+      PARAMS.forEach(function (p) { var val = searchParams.get(p); if (val) captured[p] = val; });
+      var stored = {};
+      try { stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}'); } catch (e) { }
+      var merged = Object.assign({}, stored, captured);
+      if (Object.keys(merged).length === 0) return;
+      try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(merged)); } catch (e) { }
+      function appendUtms(href) {
+        try {
+          var url = new URL(href, window.location.origin);
+          Object.keys(merged).forEach(function (key) { if (!url.searchParams.has(key)) url.searchParams.set(key, merged[key]); });
+          return url.toString();
+        } catch (e) { return href; }
+      }
+      document.addEventListener('click', function (e) {
+        var anchor = e.target.closest('a[href]');
+        if (!anchor) return;
+        var href = anchor.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+        anchor.setAttribute('href', appendUtms(href));
+      }, true);
+      document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.action) return;
+        form.action = appendUtms(form.action);
+      }, true);
+    })();
+  </script>
+  <!-- Utmify UTM Tracking -->
+  <script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+  <script>
+    (function () {
+      // Reanima o contador "50% OFF acaba em MM:SS" (era React, virou estatico no clone)
+      var target = null;
+      document.querySelectorAll('span').forEach(function (s) {
+        if (!target && /acaba em\s*\d{1,2}:\d{2}/.test(s.textContent)) target = s;
+      });
+      if (!target) return;
+      var total = 15 * 60; // 15 min
+      function fmt(t) { var m = Math.floor(t / 60), sec = t % 60; return m + ':' + (sec < 10 ? '0' : '') + sec; }
+      function tick() {
+        if (total < 0) total = 15 * 60;
+        target.innerHTML = target.innerHTML.replace(/acaba em\s*\d{1,2}:\d{2}/, 'acaba em ' + fmt(total));
+        total--;
+      }
+      tick(); setInterval(tick, 1000);
+    })();
+  </script>
+  <!-- Hero CTA: apenas scroll suave para #checkout, sem tocar no historico (nao dispara o back-redirect) -->
+  <script>
+    (function () {
+      var hero = document.getElementById('hero-cta');
+      var target = document.getElementById('checkout');
+      if (!hero || !target) return;
+      hero.addEventListener('click', function (e) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    })();
+  </script>
+  <!-- Exit-Intent 2 estagios (aditivo — nao altera layout, pixel, utmify ou UTMs)
+     1a saida  -> abre o popup de desconto Premium (#downsell-modal)
+     2a saida  -> redireciona pra /back/ (back redirect) -->
+  <script>
+    (function () {
+      var TARGET = 'back/';                 // pagina de recuperacao (/back/)
+      var DONE = 'br_done';                 // ja redirecionou nesta sessao
+      var modal = document.getElementById('downsell-modal');
+      var armed = true, stage = 0;            // 0=nada  1=popup mostrado
+
+      // Nao disparar p/ quem foi ao checkout (evita atrapalhar quem compra)
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('a[href]') : null;
+        if (a && /pay\.kirvano\.com/.test(a.href)) armed = false;
+      }, true);
+
+      function done() { return sessionStorage.getItem(DONE); }
+      function isOpen() { return modal && modal.classList.contains('is-open'); }
+      function openPopup() { if (modal) { modal.classList.add('is-open'); document.body.style.overflow = 'hidden'; } }
+      function redirect() {
+        if (done()) return;
+        sessionStorage.setItem(DONE, '1');
+        location.href = TARGET + location.search;   // preserva UTMs
+      }
+      function armBack() { history.pushState({}, '', location.href); }
+
+      // Trap do botao voltar (mobile + desktop)
+      armBack(); armBack();
+      window.addEventListener('popstate', function () {
+        if (!armed || done()) return;
+        if (stage === 0) { stage = 1; openPopup(); armBack(); }  // 1o voltar -> popup, re-arma o trap
+        else { redirect(); }                                // 2o voltar -> back redirect
+      });
+
+      // Desktop: mouse sobe pra fechar a aba
+      document.addEventListener('mouseleave', function (e) {
+        if (e.clientY > 0 || !armed || done()) return;
+        if (stage === 0) { stage = 1; openPopup(); }              // 1a saida -> popup
+        else if (!isOpen()) { redirect(); }                   // so redireciona depois que fechou o popup
+      });
+    })();
+  </script>
+
+</body>
+</html>
