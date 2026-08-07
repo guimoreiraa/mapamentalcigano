@@ -8,9 +8,9 @@
   <link rel="preconnect" href="https://cdn.utmify.com.br" crossorigin="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/HeroCigano-CSjaBAk9.webp" fetchpriority="high">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/tailwind.css">
   <style>
     :root {
       --accent-red: #ef233c;
@@ -72,6 +72,20 @@
 
     .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
+
+    /* Checkout CTA — feedback de clique/toque */
+    .checkout-cta { position: relative; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    .checkout-cta.is-pressed { transform: scale(0.96); filter: brightness(0.9); }
+    .checkout-cta.is-loading { pointer-events: none; }
+    .checkout-cta.is-loading .cta-label { opacity: 0; }
+    .checkout-cta .cta-spinner { display: none; }
+    .checkout-cta.is-loading .cta-spinner {
+      display: block; position: absolute; inset: 0; margin: auto;
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 2.5px solid rgba(255,255,255,.35); border-top-color: #fff;
+      animation: cta-spin .6s linear infinite;
+    }
+    @keyframes cta-spin { to { transform: rotate(360deg); } }
 
     /* FAQ accordion */
     .faq-chevron { transition: transform .2s ease; }
@@ -419,7 +433,7 @@
                   <li class="flex items-start gap-2"><span class="mt-0.5 grid place-items-center w-5 h-5 rounded-full bg-[#22c55e] text-black shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M20 6 9 17l-5-5"></path></svg></span><span class="text-zinc-300">Acesso vitalício — é seu pra sempre</span></li>
                 </ul>
                 <div class="mt-8 w-full">
-                  <a href="https://pay.wiapy.com/pKX90ZJuNNel" class="cta-pulse block w-full text-center rounded-2xl px-6 py-5 text-lg font-extrabold uppercase tracking-wide text-white bg-gradient-to-r from-[#ef233c] to-[#b3132a] active:scale-[0.98] transition-transform">QUERO O PLANO PREMIUM</a>
+                  <a href="https://pay.wiapy.com/pKX90ZJuNNel" class="checkout-cta cta-pulse block w-full text-center rounded-2xl px-6 py-5 text-lg font-extrabold uppercase tracking-wide text-white bg-gradient-to-r from-[#ef233c] to-[#b3132a] transition-transform duration-100"><span class="cta-label">QUERO O PLANO PREMIUM</span><span class="cta-spinner"></span></a>
                 </div>
                 <div class="mt-4 flex flex-col items-center gap-3">
                   <div class="flex items-center gap-2 text-[10px] text-zinc-500 uppercase font-bold tracking-widest">
@@ -522,8 +536,8 @@
       <p class="mt-5 sm:mt-6 text-sm sm:text-base font-bold text-[#ef233c]">de <span class="line-through">R$ 27,90</span> por apenas</p>
       <div class="price-big mt-1 font-black text-[#22c55e] leading-none whitespace-nowrap">R$ 19,90</div>
       <p class="mt-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-zinc-500">ou 3x de R$ 7,23 no cartão*</p>
-      <a href="https://pay.wiapy.com/s37Fo8zOdBv" class="cta-pulse mt-5 sm:mt-6 block w-full text-center rounded-2xl px-4 sm:px-6 py-4 sm:py-5 text-base sm:text-lg font-extrabold uppercase tracking-wide text-white bg-gradient-to-r from-[#22c55e] to-[#0f9d4f] active:scale-[0.98] transition-transform">Quero meu desconto!</a>
-      <a href="https://pay.wiapy.com/gdIAEWLdHZW" id="downsell-basico" class="mt-4 inline-block text-xs sm:text-sm font-bold uppercase text-zinc-500 hover:text-zinc-300 underline underline-offset-4">Não, prefiro só o material básico.</a>
+      <a href="https://pay.wiapy.com/s37Fo8zOdBv" class="checkout-cta cta-pulse mt-5 sm:mt-6 block w-full text-center rounded-2xl px-4 sm:px-6 py-4 sm:py-5 text-base sm:text-lg font-extrabold uppercase tracking-wide text-white bg-gradient-to-r from-[#22c55e] to-[#0f9d4f] transition-transform duration-100"><span class="cta-label">Quero meu desconto!</span><span class="cta-spinner"></span></a>
+      <a href="https://pay.wiapy.com/gdIAEWLdHZW" id="downsell-basico" class="checkout-cta mt-4 inline-block text-xs sm:text-sm font-bold uppercase text-zinc-500 hover:text-zinc-300 underline underline-offset-4"><span class="cta-label">Não, prefiro só o material básico.</span><span class="cta-spinner" style="width:14px;height:14px;border-width:2px"></span></a>
     </div>
   </div>
 
@@ -558,6 +572,26 @@
     })();
   </script>
 
+  <!-- Feedback de clique/toque nos botões de checkout: aperta, mostra loading, so entao navega -->
+  <script>
+    (function () {
+      document.querySelectorAll('a.checkout-cta').forEach(function (link) {
+        link.addEventListener('touchstart', function () { link.classList.add('is-pressed'); }, { passive: true });
+        link.addEventListener('mousedown', function () { link.classList.add('is-pressed'); });
+        ['touchend', 'touchcancel', 'mouseup', 'mouseleave'].forEach(function (ev) {
+          link.addEventListener(ev, function () { link.classList.remove('is-pressed'); });
+        });
+        link.addEventListener('click', function (e) {
+          if (link.classList.contains('is-loading')) { e.preventDefault(); return; }
+          e.preventDefault();
+          var href = link.getAttribute('href');
+          link.classList.remove('is-pressed');
+          link.classList.add('is-loading');
+          setTimeout(function () { window.location.href = href; }, 220);
+        });
+      });
+    })();
+  </script>
   <!-- Carrossel de depoimentos: setas, dots e arraste com o mouse -->
   <script>
     (function () {
@@ -704,7 +738,7 @@
       // Nao disparar p/ quem foi ao checkout (evita atrapalhar quem compra)
       document.addEventListener('click', function (e) {
         var a = e.target.closest ? e.target.closest('a[href]') : null;
-        if (a && /pay\.kirvano\.com/.test(a.href)) armed = false;
+        if (a && /^https:\/\/pay\./.test(a.href)) armed = false;
       }, true);
 
       function done() { return sessionStorage.getItem(DONE); }
